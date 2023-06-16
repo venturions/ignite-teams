@@ -1,9 +1,10 @@
-import { Container, Title } from './styles'
+import { Container } from './styles'
+import { Text } from 'react-native'
 
 export function Groups() {
   return (
     <Container>
-      <Title>Groups</Title>
+      <Text>Groups</Text>
     </Container>
   )
 }
