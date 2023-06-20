@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 
-import { Groups } from '@screens/Groups'
+import NewGroup from '@screens/NewGroup'
 import { ThemeProvider } from 'styled-components'
 import theme from './src/theme'
 import {
@@ -21,7 +21,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Groups /> : <Loading />}
+      {fontsLoaded ? <NewGroup /> : <Loading />}
     </ThemeProvider>
   )
 }
