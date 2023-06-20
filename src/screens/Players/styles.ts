@@ -1,5 +1,5 @@
-import { View } from 'react-native'
-import { styled } from 'styled-components'
+import { View, Text } from 'react-native'
+import { css, styled } from 'styled-components'
 
 export const Container = styled(View)`
   flex: 1;
@@ -14,4 +14,20 @@ export const Form = styled(View)`
   flex-direction: row;
   justify-content: center;
   border-radius: 6px;
+`
+
+export const HeaderList = styled(View)`
+  width: 100%;
+
+  flex-direction: row;
+  align-items: center;
+
+  margin: 32px 0 12px;
+`
+export const NumbersOfPlayers = styled(Text)`
+  ${({ theme }) => css`
+    color: ${theme.COLORS.GRAY_200};
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.SM}px;
+  `}
 `
