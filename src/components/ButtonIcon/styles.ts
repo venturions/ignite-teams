@@ -1,5 +1,5 @@
 import { TouchableOpacity } from 'react-native'
-import { styled } from 'styled-components'
+import styled from 'styled-components/native'
 import { MaterialIcons } from '@expo/vector-icons'
 
 export type ButtonIconTypeStyleProps = 'PRIMARY' | 'SECONDARY'

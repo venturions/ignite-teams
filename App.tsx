@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 
-import { ThemeProvider } from 'styled-components'
 import theme from './src/theme'
 import {
   useFonts,
@@ -10,6 +9,7 @@ import {
 import { Loading } from '@components/Loading'
 import { StatusBar } from 'react-native'
 import { Routes } from '@routes/index'
+import { ThemeProvider } from 'styled-components/native'
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold })

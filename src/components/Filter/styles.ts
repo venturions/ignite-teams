@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text } from 'react-native'
-import { css, styled } from 'styled-components'
+import styled, { css } from 'styled-components/native'
 
 export interface FilterStyleProps {
   isActive?: boolean

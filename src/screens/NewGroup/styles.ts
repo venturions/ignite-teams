@@ -1,7 +1,7 @@
-import { UsersThree } from 'phosphor-react-native'
+import { MaterialIcons } from '@expo/vector-icons'
 import { View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { styled } from 'styled-components'
+import styled from 'styled-components/native'
 
 export const Container = styled(SafeAreaView)`
   flex: 1;
@@ -14,7 +14,7 @@ export const Content = styled(View)`
   justify-content: center;
 `
 
-export const Icon = styled(UsersThree).attrs(({ theme }) => ({
+export const Icon = styled(MaterialIcons).attrs(({ theme }) => ({
   size: 56,
   color: theme.COLORS.GREEN_700,
 }))`

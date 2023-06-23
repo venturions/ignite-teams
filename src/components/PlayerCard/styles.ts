@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons'
 import { View, Text } from 'react-native'
-import { css, styled } from 'styled-components'
+import styled, { css } from 'styled-components/native'
 
 export const Container = styled(View)`
   width: 100%;

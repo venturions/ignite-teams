@@ -17,7 +17,7 @@ export function Header({ showBackButton = false }: Props) {
     <Container>
       {showBackButton && (
         <BackButton onPress={handleGoBack}>
-          <BackIcon color="#FFF" size={32} />
+          <BackIcon name="chevron-left" color="#FFF" size={32} />
         </BackButton>
       )}
       <Logo source={LogoImg} />

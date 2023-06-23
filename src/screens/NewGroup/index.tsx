@@ -19,7 +19,7 @@ export default function NewGroup() {
     <Container>
       <Header showBackButton />
       <Content>
-        <Icon />
+        <Icon name="group" />
         <Highlight
           title="Nova turma"
           subtitle="crie a turma para adicionar pessoas"
