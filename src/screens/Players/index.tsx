@@ -13,6 +13,8 @@ import { useRoute } from '@react-navigation/native'
 import { AppError } from '@utils/AppError'
 import { playerAddByGroup } from '@storage/group/player/playerAddByGroup'
 import { playersGetByGroup } from '@storage/group/player/playersGetByGroup'
+import { playersGetByGroupAndTeam } from '@storage/group/player/PlayersGetByGroupAndTeam'
+import { PlayerStorageDTO } from '@storage/group/player/playerStorageDTO'
 
 type RouteParams = {
   group: string
@@ -21,7 +23,7 @@ type RouteParams = {
 export default function Players() {
   const [newPlayerName, setNewPlayerName] = useState('')
   const [team, setTeam] = useState('Time A')
-  const [players, setPlayers] = useState([])
+  const [players, setPlayers] = useState<PlayerStorageDTO[]>([])
 
   const route = useRoute()
   const { group } = route.params as RouteParams
@@ -50,6 +52,19 @@ export default function Players() {
         console.log(error)
         Alert.alert('Nova pessoa', 'Não foi possivel adicionar')
       }
+    }
+  }
+
+  async function fetchPlayersByTeam() {
+    try {
+      const playersByTeam = await playersGetByGroupAndTeam(group, team)
+      setPlayers(playersByTeam)
+    } catch (error) {
+      console.log(error)
+      Alert.alert(
+        'Pessoas',
+        'Não foi possivel carregar as pessoas do time selecionado',
+      )
     }
   }
 
@@ -83,9 +98,9 @@ export default function Players() {
       </HeaderList>
       <FlatList
         data={players}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <PlayerCard name={item} onRemove={() => {}} />
+          <PlayerCard name={item.name} onRemove={() => {}} />
         )}
         ListEmptyComponent={() => (
           <ListEmpty message="Não há pessoas nesse time." />
