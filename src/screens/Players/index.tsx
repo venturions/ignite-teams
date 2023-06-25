@@ -5,14 +5,13 @@ import { ButtonIcon } from '@components/ButtonIcon'
 import { Input } from '@components/Input'
 import { Filter } from '@components/Filter'
 import { Alert, FlatList } from 'react-native'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { PlayerCard } from '@components/PlayerCard'
 import { ListEmpty } from '@components/ListEmpty'
 import { Button } from '@components/Button'
 import { useRoute } from '@react-navigation/native'
 import { AppError } from '@utils/AppError'
 import { playerAddByGroup } from '@storage/group/player/playerAddByGroup'
-import { playersGetByGroup } from '@storage/group/player/playersGetByGroup'
 import { playersGetByGroupAndTeam } from '@storage/group/player/PlayersGetByGroupAndTeam'
 import { PlayerStorageDTO } from '@storage/group/player/playerStorageDTO'
 
@@ -43,8 +42,7 @@ export default function Players() {
 
     try {
       await playerAddByGroup(newPlayer, group)
-      const players = await playersGetByGroup(group)
-      console.log(players)
+      fetchPlayersByTeam()
     } catch (error) {
       if (error instanceof AppError) {
         Alert.alert('Nova pessoa', error.message)
@@ -55,7 +53,7 @@ export default function Players() {
     }
   }
 
-  async function fetchPlayersByTeam() {
+  const fetchPlayersByTeam = useCallback(async () => {
     try {
       const playersByTeam = await playersGetByGroupAndTeam(group, team)
       setPlayers(playersByTeam)
@@ -66,7 +64,11 @@ export default function Players() {
         'Não foi possivel carregar as pessoas do time selecionado',
       )
     }
-  }
+  }, [group, team])
+
+  useEffect(() => {
+    fetchPlayersByTeam()
+  }, [fetchPlayersByTeam, team])
 
   return (
     <Container>
